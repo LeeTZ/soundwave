@@ -30,7 +30,8 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var parseDate = d3.time.format("%Y%m%d").parse;
+var parseDate = d3.time.format("%Y:%m:%d").parse;
+var parseTime = d3.time.format("%h:%m:%s.%ms").parse;
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -57,14 +58,15 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", function(error, data) {
+d3.tsv("fan.tsv", function(error, data) {
   data.forEach(function(d) {
-    d.date = parseDate(d.date);
-    d.low = +d.low;
-    d.high = +d.high;
+    d.date = parseDate(d.Date);
+    d.time = parseTime(d.Time);
+    d.low = +d.Average;
+    d.high = +d.Peak;
   });
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  x.domain(d3.extent(data, function(d) { return d.time; }));
   y.domain([d3.min(data, function(d) { return d.low; }), d3.max(data, function(d) { return d.high; })]);
 
   svg.append("path")
