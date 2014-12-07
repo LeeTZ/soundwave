@@ -78,13 +78,11 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var thedata;
-var thetime =[];
 d3.csv("tian.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Time"; }));
 
   data.forEach(function(d) {
     d.date = parseTime(d.Time);
-    thetime.append(d.date); 
   });
 
   var cities = color.domain().map(function(name) {
