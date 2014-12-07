@@ -64,7 +64,6 @@ body {
 <body>
 <script src="http://d3js.org/d3.v3.js"></script>
   
-  <div id="mainContainer">
         <div id="header">
             <div id="logo">
                 <img src="logo-tn.png">
@@ -119,7 +118,7 @@ body {
    <text id="c4text" x="360" y="480" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
    <text id="displaytext" x="20" y="570" font-family="Georgia" font-size="28px" fill="White"><b>Hi</b></text>
 </svg>
-</div>
+
 <script>
 // 对Date的扩展，将 Date 转化为指定格式的String 
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
@@ -146,7 +145,7 @@ Date.prototype.Format = function(fmt)
   return fmt; 
 }
 
-var margin = {top: 650, right: 80, bottom: 30, left: 30},
+var margin = {top: 50, right: 80, bottom: 30, left: 30},
     width = 1000 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
