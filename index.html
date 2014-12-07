@@ -58,7 +58,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("fan.tsv", function(error, data) {
+d3.csv("tian.csv", function(error, data) {
   data.forEach(function(d) {
 //    d.date2 = parseDate(d.Date);
     d.date = parseTime(d.Time);
