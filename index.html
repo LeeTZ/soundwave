@@ -29,11 +29,12 @@ body {
 <script src="http://d3js.org/d3.v3.js"></script>
 <svg width="800" height="600">
  <image x="20" y="20" width="800" height="600" xlink:href="dorm.jpg"/>
- <circle id="c1" cx="170" cy="170" r="20" fill="green" />
- <circle id="c2" cx="170" cy="420" r="40" fill="purple" />
- <circle id="c3" cx="420" cy="170" r="60" fill="blue" />
+ <circle id="c1" cx="220" cy="200" r="20" fill="green" />
+ <circle id="c2" cx="200" cy="470" r="40" fill="purple" />
+ <circle id="c3" cx="480" cy="220" r="60" fill="blue" />
  <circle id="c4" cx="470" cy="470" r="80" fill="red" />
-  <text x="165" y="170" font-family="sans-serif" font-size="12px" fill="white">20.34</text>
+   <text id="c1text" x="220" y="200" text-anchor="middle" font-family="sans-serif" font-size="12px" fill="white">20.34</text>
+
 </svg>
 
 
@@ -134,11 +135,16 @@ d3.csv("tian.csv", function(error, data) {
 var timeindex = 0;
 setInterval(function(){
    var r0 = thedata[0].values[timeindex].temperature;
-console.log(thedata);
-console.log(r0);
-d3.select("#c1").attr("r",r0);
-timeindex++;
-if (timeindex >= 369) return;
+   d3.select("#c1").attr("r",r0);
+   d3.select("#c1text").textContent=r0.toString();
+   var r1 = thedata[1].values[timeindex].temperature;
+   d3.select("#c2").attr("r",r1);
+   var r2 = thedata[2].values[timeindex].temperature;
+   d3.select("#c3").attr("r",r2);
+   var r3 = thedata[3].values[timeindex].temperature;
+   d3.select("#c4").attr("r",r3);
+   timeindex++;
+   if (timeindex >= 369) return;
 }, 100);
 
 </script>
