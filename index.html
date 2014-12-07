@@ -30,8 +30,8 @@ body {
 <script>
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 1280 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%Y%m%d").parse;
 var parseTime = d3.time.format("%H:%M:%S.%L").parse;
@@ -99,7 +99,7 @@ d3.csv("tian.csv", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Temperature (ºF)");
+      .text("Noise (dB)");
 
   var city = svg.selectAll(".city")
       .data(cities)
