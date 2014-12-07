@@ -50,7 +50,7 @@ var yAxis = d3.svg.axis()
 var area = d3.svg.area()
     .x(function(d) { return x(d.date); })
     .y0(function(d) { return y(d.low); })
-    .y1(function(d) { return y(d.low); });
+    .y1(function(d) { return y(d.high); });
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -63,7 +63,7 @@ d3.csv("tian.csv", function(error, data) {
 //    d.date2 = parseDate(d.Date);
     d.date = parseTime(d.Time);
     d.low = +d.Average;
-    d.high = +d.Peak;
+    d.high = +d.Peak - Math.random(d.Peak-d.Average);
     console.log(d.date);
     console.log(d.low);
     console.log(d.high);
@@ -71,7 +71,7 @@ d3.csv("tian.csv", function(error, data) {
   });
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([d3.min(data, function(d) { return d.low; }), d3.max(data, function(d) { return d.low; })]);
+  y.domain([d3.min(data, function(d) { return d.low; }), d3.max(data, function(d) { return d. high; })]);
 
   svg.append("path")
       .datum(data)
