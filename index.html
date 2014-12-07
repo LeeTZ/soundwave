@@ -60,10 +60,14 @@ var svg = d3.select("body").append("svg")
 
 d3.tsv("fan.tsv", function(error, data) {
   data.forEach(function(d) {
-    d.date2 = parseDate(d.Date);
+//    d.date2 = parseDate(d.Date);
     d.date = parseTime(d.Time);
     d.low = +d.Average;
     d.high = +d.Peak;
+    console.log(d.date);
+    console.log(d.low);
+    console.log(d.high);
+    
   });
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
