@@ -60,13 +60,13 @@ var svg = d3.select("body").append("svg")
 
 d3.tsv("fan.tsv", function(error, data) {
   data.forEach(function(d) {
-    d.date = parseDate(d.Date);
-    d.time = parseTime(d.Time);
+    d.date2 = parseDate(d.Date);
+    d.date = parseTime(d.Time);
     d.low = +d.Average;
     d.high = +d.Peak;
   });
 
-  x.domain(d3.extent(data, function(d) { return d.time; }));
+  x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([d3.min(data, function(d) { return d.low; }), d3.max(data, function(d) { return d.high; })]);
 
   svg.append("path")
