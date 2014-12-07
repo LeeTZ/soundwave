@@ -34,6 +34,9 @@ body {
  <circle id="c3" cx="480" cy="220" r="60" fill="blue" />
  <circle id="c4" cx="470" cy="470" r="80" fill="red" />
    <text id="c1text" x="220" y="200" text-anchor="middle" font-family="sans-serif" font-size="12px" fill="white">20.34</text>
+   <text id="c2text" x="200" y="470" text-anchor="middle" font-family="sans-serif" font-size="12px" fill="white">20.34</text>
+   <text id="c3text" x="480" y="220" text-anchor="middle" font-family="sans-serif" font-size="12px" fill="white">20.34</text>
+   <text id="c4text" x="470" y="470" text-anchor="middle" font-family="sans-serif" font-size="12px" fill="white">20.34</text>
 
 </svg>
 
@@ -136,15 +139,18 @@ var timeindex = 0;
 setInterval(function(){
    var r0 = thedata[0].values[timeindex].temperature;
    d3.select("#c1").attr("r",r0);
-   d3.select("#c1text").textContent=r0.toString();
+   d3.select("#c1text").attr("text",int(r0).toString();
    var r1 = thedata[1].values[timeindex].temperature;
    d3.select("#c2").attr("r",r1);
+   d3.select("#c2text").attr("text",int(r1).toString();
    var r2 = thedata[2].values[timeindex].temperature;
    d3.select("#c3").attr("r",r2);
+   d3.select("#c3text").attr("text",int(r2).toString();
    var r3 = thedata[3].values[timeindex].temperature;
    d3.select("#c4").attr("r",r3);
+   d3.select("#c4text").attr("text",int(r3).toString();
    timeindex++;
-   if (timeindex >= 369) return;
+   if (timeindex >= 369) inta=window.clearInterval(inta);
 }, 100);
 
 </script>
