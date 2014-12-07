@@ -70,7 +70,7 @@ body {
                 <img src="logo-tn.png">
             </div>
             <div id="caption">
-                Do you know the impact of noise?
+                Do you know the impact of noise around us?
             </div>
             <div id="feedback"><a href="mailto:noisefeedback@movity.com" style="text-decoration:none; color: white;">Feedback</a></div>
             <div id="separator"></div>
@@ -79,7 +79,7 @@ body {
             <!-- 
             <div id="movityLink"><a href="http://www.movity.com">Signup for Movity's Beta</a></div>
             -->
-            <div id="movityLink" style="font-size:12px; font-style:italic; color:#999; margin-top:28px;">Created by <a style="color:#999;" href="http://www.stamen.com/">Stamen</a>, <a style="color:#999;" href="http://www.arup.com/">Arup</a>, and <a style="color:#999;" href="http://www.movity.com/">Movity</a></div>
+            <div id="movityLink" style="font-size:12px; font-style:italic; color:#999; margin-top:28px;">Created by Shilin Fan</div>
             
         </div>
 
@@ -99,28 +99,7 @@ body {
                     <p>TN collects, maps and layers noise data across Tenderloin, San Francisco,
                     exploring the aural quality of streets via frequently-logged historical
                     decibel (dBA) levels over a few days period.</p>
-
-                    <p>TN has been developed as part of the CityCentered Festival organized
-                    by GAFFTA in June 2010. The project is the outcome of many individuals
-                    who are employed at various organizations and who have collaborated
-                    on a pro-bono basis. Three key organizations involved are <a href="http://www.stamen.com/">Stamen Design</a>, <a target="_blank" href="http://www.movity.com/">Movity.com</a> and <a href="http://www.arup.com/">Arup</a>:
-                    </p>
-                <div style="float:left; margin:0px;">
-                    <a target="_blank" href="http://www.stamen.com/"><img style="height:20px; margin-top:12px;" src="stamen.png"></a>
-                </div>
-                <div style="float:left; margin:0 0 0 20px;">
-                    <a target="_blank" href="http://www.movity.com/"><img style="height:30px; margin-top:9px;" src="logo-movity.png"></a>
-                </div>
-                <div style="float:left; margin:0 0 0 20px;">
-                    <a target="_blank" href="http://www.arup.com/"><img style="height:30px; margin-top:5px;" src="logo-arup.png"></a>
-                </div>
                 <div class="clearboth"></div>
-                
-                <p>For documentation about the design process, see <a href="http://picasaweb.google.com/tendernoise.sf">TenderNoise | Picasa</a>.</p>
-                <p>Please share your feedback at <a href="mailto:noisefeedback@movity.com">feedback@movity.com</a>.</p>
-                <p>Also make sure to check out our sister project, entitled <a href="http://tendervoice.org/">TenderVoice</a>.</p>
-
-
             </div>
         </div>
 
@@ -138,7 +117,7 @@ body {
    <text id="c2text" x="190" y="480" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
    <text id="c3text" x="360" y="260" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
    <text id="c4text" x="360" y="480" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
-   <text id="displaytext" x="20" y="570" font-family="Georgia" font-size="28px" fill="black"><b>Hi</b></text>
+   <text id="displaytext" x="20" y="570" font-family="Georgia" font-size="28px" fill="White"><b>Hi</b></text>
 </svg>
 </div>
 <script>
@@ -167,7 +146,7 @@ Date.prototype.Format = function(fmt)
   return fmt; 
 }
 
-var margin = {top: 5, right: 80, bottom: 30, left: 30},
+var margin = {top: 650, right: 80, bottom: 30, left: 30},
     width = 1000 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -229,6 +208,7 @@ d3.csv("tian.csv", function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
+      .attr("fill","white")
       .call(xAxis);
 
   svg.append("g")
@@ -238,6 +218,7 @@ d3.csv("tian.csv", function(error, data) {
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
+      .attr("fill","white")
       .style("text-anchor", "end")
       .text("Noise (dB)");
 
@@ -256,6 +237,7 @@ d3.csv("tian.csv", function(error, data) {
       .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
       .attr("x", 3)
       .attr("dy", ".35em")
+      .attr("fill","white")
       .text(function(d) { return d.name; });
 });
 
