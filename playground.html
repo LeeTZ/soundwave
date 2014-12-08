@@ -266,8 +266,12 @@ var timeindex = 0;
 var scale = 0.54;
 var showtime = new Date(2014,12,4,21,53,44,474);
 var timer = null;
+var nowplaying = false;
 
 $("#playbutton").click(function(){
+   if (nowplaying)
+       return;
+   nowplaying = true;
    timer = setInterval(function(){
    var r0 = thedata[0].values[timeindex].temperature;
    d3.select("#c1").attr("r",r0*scale);
@@ -298,6 +302,9 @@ $("#playbutton").click(function(){
 $("#playbutton").click();
 
 $("#stopbutton").click(function(){
+    if (!nowplaying)
+       return;
+    nowplaying = false;
     clearInterval(timer);
     timer = null;
 });
@@ -306,6 +313,7 @@ $("#replaybutton").click(function(){
   timeindex = 0;
   showtime = null;
   showtime = new Date(2014,12,4,21,53,44,474);
+  $("#stopbutton").click();
   $("#playbutton").click();
 });
 
