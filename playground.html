@@ -112,8 +112,11 @@ body {
    <text id="c4text" x="680" y="400" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
    <text id="displaytext" x="20" y="570" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
 </svg>
-<input id="stopbutton" type="button" value="stop"/>
+<div class="buttons" style="display:block">
 <input id="playbutton" type="button" value="play"/>
+<input id="stopbutton" type="button" value="stop"/>
+<input id="replaybutton" type="button" value="replay"/>
+</div>
 <script> 
 // 对Date的扩展，将 Date 转化为指定格式的String 
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
@@ -265,7 +268,6 @@ var showtime = new Date(2014,12,4,21,53,44,474);
 var timer = null;
 
 $("#playbutton").click(function(){
-  console.log("coming");
    timer = setInterval(function(){
    var r0 = thedata[0].values[timeindex].temperature;
    d3.select("#c1").attr("r",r0*scale);
@@ -284,19 +286,23 @@ $("#playbutton").click(function(){
    d3.select("#c4").attr("fill",getcolor(r3));
    d3.select("#c4text").text(Math.floor(r3));
    d3.select("#displaytext").text("At " + showtime.Format("hh:mm") + ", the average noise is " + r0.toString() + " dB");
-   d3.select("#timeline").attr("x1",Math.floor(5 + timeindex*2.9));
-   d3.select("#timeline").attr("x2",Math.floor(5 + timeindex*2.9));
+   d3.select("#timeline").attr("x1",Math.floor(5 + timeindex*3));
+   d3.select("#timeline").attr("x2",Math.floor(5 + timeindex*3));
    timeindex++;
-   if (timeindex % 3 == 0)
+   if (timeindex % 4 == 0)
     showtime.setMinutes(showtime.getMinutes()+1);
    if (timeindex >= 301) inta=window.clearInterval(inta);
 }, 100);
 });
 
 $("#stopbutton").click(function(){
-  console.log("coming");
     clearInterval(timer);
     timer = null;
+});
+
+$("#replaybutton").click(function(){
+  timeindex = 0;
+  $("#playbutton").click();
 });
 
 </script>
