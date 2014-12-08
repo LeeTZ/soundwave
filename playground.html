@@ -265,6 +265,7 @@ var showtime = new Date(2014,12,4,21,53,44,474);
 var timer = null;
 
 $("#startbutton").click(function(){
+  console.log("coming");
    timer = setInterval(function(){
    var r0 = thedata[0].values[timeindex].temperature;
    d3.select("#c1").attr("r",r0*scale);
@@ -293,6 +294,7 @@ $("#startbutton").click(function(){
 });
 
 $("#stopbutton").click(function(){
+  console.log("coming");
     clearInterval(timer);
     timer = null;
 });
