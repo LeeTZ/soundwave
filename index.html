@@ -113,6 +113,12 @@ body {
    <text id="displaytext" x="20" y="570" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
 </svg>
 
+<div class="buttons" style="display:block; margin-left:20px;" >
+<input id="playbutton" type="button" value="play"/>
+<input id="stopbutton" type="button" value="stop"/>
+<input id="replaybutton" type="button" value="replay"/>
+</div>
+
 <script>
 // 对Date的扩展，将 Date 转化为指定格式的String 
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
@@ -261,7 +267,9 @@ function getcolor(db){
 var timeindex = 0;
 var scale = 0.54;
 var showtime = new Date(2014,12,4,19,34,44,474);
-setInterval(function(){
+
+$("#playbutton").click(function(){
+   timer = setInterval(function(){
    var r0 = thedata[0].values[timeindex].temperature;
    d3.select("#c1").attr("r",r0*scale);
    d3.select("#c1").attr("fill",getcolor(r0));
@@ -283,8 +291,22 @@ setInterval(function(){
    d3.select("#timeline").attr("x2",Math.floor(5 + timeindex*2.5));
    timeindex++;
    if (timeindex % 8 == 0)
-   	showtime.setSeconds(showtime.getSeconds()+1);
+    showtime.setSeconds(showtime.getSeconds()+1);
    if (timeindex >= 301) inta=window.clearInterval(inta);
 }, 100);
+
+});
+
+$("#stopbutton").click(function(){
+    clearInterval(timer);
+    timer = null;
+});
+
+$("#replaybutton").click(function(){
+  timeindex = 0;
+  showtime = null;
+  showtime = new Date(2014,12,4,19,34,44,474);
+  $("#playbutton").click();
+});
 
 </script>
