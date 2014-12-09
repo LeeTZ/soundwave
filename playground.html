@@ -100,7 +100,7 @@ body {
  <image id="c8" x="490" y="300" width="50" height="50" xlink:href="images/green.png"/>
  <image id="c9" x="430" y="250" width="50" height="50" xlink:href="images/green.png"/>
  <image id="c10" x="520" y="410" width="50" height="50" xlink:href="images/green.png"/>
- <image id="me" x="340" y="170" width="60" height="60" xlink:href="images/me.jpg"/>
+ <image id="me" x="340" y="140" width="60" height="60" xlink:href="images/me.jpg"/>
 
    <text id="c1text" x="120" y="370" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
    <text id="c2text" x="350" y="380" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
@@ -120,12 +120,12 @@ body {
   <image x="692" y="295" width="65" height="65" xlink:href="images/orange.png"/>
   <image x="695" y="380" width="60" height="60" xlink:href="images/red_work.png"/>
   <image x="695" y="460" width="50" height="50" xlink:href="images/green_normal.png"/>
-  <text x="800" y="95" font-family="Arial" font-size="24px" fill="White"> &lt; 70 dB</text>
-  <text x="800" y="165" font-family="Arial" font-size="24px" fill="White"> 70 - 90dB</text>
-  <text x="800" y="240" font-family="Arial" font-size="24px" fill="White"> 90 - 100 dB</text>
-  <text x="800" y="320" font-family="Arial" font-size="24px" fill="White"> &gt; 100 dB</text>
-  <text x="800" y="405" font-family="Arial" font-size="24px" fill="White"> work or human sound</text>
-  <text x="800" y="485" font-family="Arial" font-size="24px" fill="White"> natrual sound</text>
+  <text x="800" y="100" font-family="Arial" font-size="24px" fill="White"> &lt; 70 dB</text>
+  <text x="800" y="175" font-family="Arial" font-size="24px" fill="White"> 70 - 90dB</text>
+  <text x="800" y="250" font-family="Arial" font-size="24px" fill="White"> 90 - 100 dB</text>
+  <text x="800" y="335" font-family="Arial" font-size="24px" fill="White"> &gt; 100 dB</text>
+  <text x="800" y="415" font-family="Arial" font-size="24px" fill="White"> work or human sound</text>
+  <text x="800" y="495" font-family="Arial" font-size="24px" fill="White"> natrual sound</text>
   
 
    <text id="displaytext" x="20" y="490" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
@@ -338,10 +338,8 @@ $("#playbutton").click(function(){
    drawcircle("#c9","#c9text",8,430,250,1);
    drawcircle("#c10","#c10text",9,520,410,3);
 
-   d3.select("#me").attr("x", (340 - (timeindex % 5) / 2));
-   d3.select("#me").attr("y", (170 - (timeindex % 5) / 2));
-   d3.select("#me").attr("width", (60 - (timeindex % 5)));
-   d3.select("#me").attr("height", (60 - (timeindex % 5)));
+   d3.select("#me").attr("y", (340 - (timeindex / 10));
+
    
 
    d3.select("#displaytext").text("At " + showtime.Format("hh:mm") + ", the average noise is " + thedata[0].values[timeindex].temperature.toString() + " dB");
