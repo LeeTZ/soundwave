@@ -85,9 +85,7 @@ body {
             <div id="content">
                 <span id="aboutUsPanelHeading">About Me</span> <span style="float:right; cursor:pointer;"> <a style="color: white;">[x]</a> </span>
                 <div class="horizontalLine"></div>
-                <p>My SoundMap (MSM) is an applied acoustic ecology project that collects, 
-                   maps and layers noise data across Tsinghua University,exploring the aural
-                    quality of streets.</p>
+                <p>City Sound Map is a brand that aims to improve lifestyles in big cities, as the increasing sound pollution has having an impact on citizens health. The app allow users to visualise cities sound and noise in terms of quality and loudness.</p>
                     <p>
                       Created by Shilin Fan
                     </p>
@@ -106,10 +104,10 @@ body {
  <circle id="c2" cx="350" cy="380" r="40" fill="green" fill-opacity:"0.75"/>
  <circle id="c3" cx="600" cy="220" r="60" fill="green" fill-opacity:"0.75"/>
  <circle id="c4" cx="600" cy="350" r="80" fill="red" fill-opacity:"0.75"/>
-   <text id="c1text" x="120" y="370" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
-   <text id="c2text" x="350" y="380" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
-   <text id="c3text" x="600" y="210" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
-   <text id="c4text" x="600" y="350" text-anchor="middle" font-family="Georgia" font-size="20px" fill="white">20.34</text>
+   <text id="c1text" x="120" y="370" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
+   <text id="c2text" x="350" y="380" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
+   <text id="c3text" x="600" y="210" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
+   <text id="c4text" x="600" y="350" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
    <text id="displaytext" x="20" y="470" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
 </svg>
 <div class="buttons" style="display:block; margin-left:20px;" >
@@ -263,7 +261,7 @@ function getcolor(db){
 }
 
 var timeindex = 0;
-var scale = 0.54;
+var scale = 0.48;
 var showtime = new Date(2014,12,4,21,53,44,474);
 var timer = null;
 var nowplaying = false;
@@ -277,6 +275,8 @@ $("#playbutton").click(function(){
    d3.select("#c1").attr("width",r0*scale);
    d3.select("#c1").attr("height",r0*scale);
    d3.select("#c1").attr("xlink:href",getcolor(r0));
+   d3.select("#c1").attr("x",120 - r0*scale / 2);
+   d3.select("#c1").attr("y",370 - r0*scale / 2);
    d3.select("#c1text").text(Math.floor(r0));
    var r1 = thedata[1].values[timeindex].temperature;
    d3.select("#c2").attr("r",r1*scale);
