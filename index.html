@@ -99,13 +99,16 @@ body {
  <image id="c2" x="180" y="420" width="50" height="50" xlink:href="images/green.png"/>
  <image id="c3" x="420" y="170" width="50" height="50" xlink:href="images/green.png"/>
  <image id="c4" x="420" y="420" width="50" height="50" xlink:href="images/green.png"/>
+ <image id="c5" x="100" y="300" width="50" height="50" xlink:href="images/green_natural.png"/>
+ <image id="c6" x="600" y="270" width="50" height="50" xlink:href="images/green_work.png"/>
  <image id="me" x="420" y="240" width="60" height="60" xlink:href="images/me.jpg"/>
 
    <text id="c1text" x="180" y="170" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
    <text id="c2text" x="180" y="420" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
    <text id="c3text" x="420" y="170" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
    <text id="c4text" x="420" y="420" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
-  
+   <text id="c5text" x="420" y="170" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c6text" x="420" y="420" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
 
   <image x="700" y="70" width="50" height="50" xlink:href="images/green.png"/>
   <image x="697" y="140" width="55" height="55" xlink:href="images/pink.png"/>
@@ -122,7 +125,7 @@ body {
 
 
 
-   <text id="displaytext" x="20" y="470" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
+   <text id="displaytext" x="20" y="500" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
 </svg>
 
 <div class="buttons" style="display:block; margin-left:20px;" >
@@ -276,23 +279,49 @@ function getcolor(db){
     else return "images/orange.png"; 
 }
 
+function getcolor2(db){
+    if (db < 70)
+      return "images/green_work.png";
+    else if (db < 90)
+      return "images/pink_work.png";
+    else if (db < 100)
+      return "images/red_work.png";
+    else return "images/orange_work.png"; 
+}
+
+function getcolor3(db){
+    if (db < 70)
+      return "images/green_normal.png";
+    else if (db < 90)
+      return "images/pink_normal.png";
+    else if (db < 100)
+      return "images/red_normal.png";
+    else return "images/orange_normal.png"; 
+}
+
 
 var timeindex = 0;
-var scale = 0.54;
+var scale = 0.75;
 var showtime = new Date(2014,12,4,19,34,44,474);
 var timer = null;
 var nowplaying = false;
 
 
-function drawcircle(object,objecttext,rank,x,y){
+function drawcircle(object,objecttext,rank,x,y,type){
    var r0 = thedata[rank].values[timeindex].temperature;
    d3.select(object).attr("width",r0*scale);
    d3.select(object).attr("height",r0*scale);
-   d3.select(object).attr("xlink:href",getcolor(r0));
+   if (type == 1)
+      d3.select(object).attr("xlink:href",getcolor(r0));
+   else if (type == 2)
+      d3.select(object).attr("xlink:href",getcolor2(r0));
+   else 
+      d3.select(object).attr("xlink:href",getcolor3(r0));
    d3.select(object).attr("x",x - r0*scale / 2);
    d3.select(object).attr("y",y - r0*scale / 2);
    d3.select(objecttext).text(Math.floor(r0));
 }
+
 
 
 
@@ -302,10 +331,12 @@ $("#playbutton").click(function(){
    nowplaying = true;
    timer = setInterval(function(){
    
-   drawcircle("#c1","#c1text",0,180,170);
-   drawcircle("#c2","#c2text",1,180,420);
-   drawcircle("#c3","#c3text",2,420,170);
-   drawcircle("#c4","#c4text",3,420,420);
+   drawcircle("#c1","#c1text",0,180,170,1);
+   drawcircle("#c2","#c2text",1,180,420,1);
+   drawcircle("#c3","#c3text",2,420,170,1);
+   drawcircle("#c4","#c4text",3,420,420,1);
+   drawcircle("#c5","#c5text",3,420,420,3);
+   drawcircle("#c6","#c6text",3,420,420,2);
 
    d3.select("#me").attr("x", (340 + (timeindex / 10)));
 
