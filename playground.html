@@ -300,7 +300,7 @@ $("#playbutton").click(function(){
 
    d3.select("me").attr("opacity", (1 - (timeindex % 10) * 0.3));
 
-   d3.select("#displaytext").text("At " + showtime.Format("hh:mm") + ", the average noise is " + r0.toString() + " dB");
+   d3.select("#displaytext").text("At " + showtime.Format("hh:mm") + ", the average noise is " + thedata[0].values[timeindex].temperature.toString() + " dB");
    d3.select("#timeline").attr("x1",Math.floor(5 + timeindex*3));
    d3.select("#timeline").attr("x2",Math.floor(5 + timeindex*3));
    timeindex++;
