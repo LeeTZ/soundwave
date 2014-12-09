@@ -87,7 +87,7 @@ body {
 
 
 
-<svg width="712" height="520" style="display:block;">
+<svg width="1200" height="520" style="display:block;">
  <image x="20" y="20" width="640" height="450" xlink:href="images/play.jpg"/>
 
  <image id="c1" x="120" y="370" width="50" height="50" xlink:href="images/green.png"/>
@@ -112,6 +112,21 @@ body {
    <text id="c8text" x="490" y="300" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
    <text id="c9text" x="420" y="250" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
    <text id="c10text" x="520" y="410" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
+
+  
+  <image x="700" y="70" width="50" height="50" xlink:href="images/green.png"/>
+  <image x="700" y="140" width="55" height="55" xlink:href="images/pink.png"/>
+  <image x="700" y="215" width="60" height="60" xlink:href="images/red.png"/>
+  <image x="700" y="295" width="65" height="65" xlink:href="images/orange.png"/>
+  <image x="700" y="380" width="60" height="60" xlink:href="images/red_work.png"/>
+  <image x="700" y="460" width="50" height="50" xlink:href="images/green_normal.png"/>
+  <text x="800" y="80" font-family="Arial" font-size="24px" fill="White"><b> &lt; 70 dB</b></text>
+  <text x="800" y="150" font-family="Arial" font-size="24px" fill="White"><b> 70 - 90dB</b></text>
+  <text x="800" y="225" font-family="Arial" font-size="24px" fill="White"><b> 90 - 100 dB</b></text>
+  <text x="800" y="305" font-family="Arial" font-size="24px" fill="White"><b> &gt; 100 dB</b></text>
+  <text x="800" y="390" font-family="Arial" font-size="24px" fill="White"><b> work or human sound</b></text>
+  <text x="800" y="470" font-family="Arial" font-size="24px" fill="White"><b> natrual sound</b></text>
+  
 
    <text id="displaytext" x="20" y="490" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
 </svg>
@@ -261,20 +276,45 @@ function getcolor(db){
     else return "images/orange.png"; 
 }
 
+function getcolor2(db){
+    if (db < 70)
+      return "images/green_work.png";
+    else if (db < 90)
+      return "images/pink_work.png";
+    else if (db < 100)
+      return "images/red_work.png";
+    else return "images/orange_work.png"; 
+}
+
+function getcolor3(db){
+    if (db < 70)
+      return "images/green_normal.png";
+    else if (db < 90)
+      return "images/pink_normal.png";
+    else if (db < 100)
+      return "images/red_normal.png";
+    else return "images/orange_normal.png"; 
+}
+
 
 
 var timeindex = 0;
-var scale = 0.55;
+var scale = 0.75;
 var showtime = new Date(2014,12,4,21,53,44,474);
 var timer = null;
 var nowplaying = false;
 
 
-function drawcircle(object,objecttext,rank,x,y){
+function drawcircle(object,objecttext,rank,x,y,type){
    var r0 = thedata[rank].values[timeindex].temperature;
    d3.select(object).attr("width",r0*scale);
    d3.select(object).attr("height",r0*scale);
-   d3.select(object).attr("xlink:href",getcolor(r0));
+   if (type == 1)
+      d3.select(object).attr("xlink:href",getcolor(r0));
+   else if (type == 2)
+      d3.select(object).attr("xlink:href",getcolor2(r0));
+   else 
+      d3.select(object).attr("xlink:href",getcolor3(r0));
    d3.select(object).attr("x",x - r0*scale / 2);
    d3.select(object).attr("y",y - r0*scale / 2);
    d3.select(objecttext).text(Math.floor(r0));
@@ -287,18 +327,19 @@ $("#playbutton").click(function(){
    nowplaying = true;
    timer = setInterval(function(){
 
-   drawcircle("#c1","c1text",0,120,370);
-   drawcircle("#c2","c2text",1,350,380);
-   drawcircle("#c3","c3text",2,600,220);
-   drawcircle("#c4","c4text",3,600,350);
-   drawcircle("#c5","c5text",4,140,170);
-   drawcircle("#c6","c6text",5,240,110);
-   drawcircle("#c7","c7text",6,210,300);
-   drawcircle("#c8","c8text",7,490,300);
-   drawcircle("#c9","c9text",8,430,250);
-   drawcircle("#c10","c10text",9,520,410);
+   drawcircle("#c1","#c1text",0,120,370,1);
+   drawcircle("#c2","#c2text",1,350,380,1);
+   drawcircle("#c3","#c3text",2,600,220,1);
+   drawcircle("#c4","#c4text",3,600,350,2);
+   drawcircle("#c5","#c5text",4,140,170,3);
+   drawcircle("#c6","#c6text",5,240,110,1);
+   drawcircle("#c7","#c7text",6,210,300,3);
+   drawcircle("#c8","#c8text",7,490,300,2);
+   drawcircle("#c9","#c9text",8,430,250,1);
+   drawcircle("#c10","#c10text",9,520,410,3);
 
-   d3.select("me").attr("opacity", (1 - (timeindex % 10) * 0.3));
+   d3.select("me").attr("width", (60 - (timeindex % 10)));
+   d3.select("me").attr("height", (60 - (timeindex % 10)));
 
    d3.select("#displaytext").text("At " + showtime.Format("hh:mm") + ", the average noise is " + thedata[0].values[timeindex].temperature.toString() + " dB");
    d3.select("#timeline").attr("x1",Math.floor(5 + timeindex*3));
