@@ -114,9 +114,9 @@ body {
    <text id="c8text" x="440" y="280" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
    <text id="c9text" x="430" y="250" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
    <text id="c10text" x="540" y="410" text-anchor="middle" font-family="Georgia" font-size="14px" fill="white">20.34</text>
-   <text id="displaytext" x="20" y="480" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
+   <text id="displaytext" x="20" y="490" font-family="Arial" font-size="26px" fill="White"><b>Hi</b></text>
 </svg>
-<div class="buttons" style="display:block; margin-left:20px;" >
+<div class="buttons" style="display:block; margin-left:280px;" >
 <input id="playbutton" type="button" value="play"/>
 <input id="stopbutton" type="button" value="stop"/>
 <input id="replaybutton" type="button" value="replay"/>
@@ -133,7 +133,7 @@ body {
   <text x="75" y="82" font-family="Arial" font-size="14px" fill="White"> 70 - 90 dB</text>
   <text x="75" y="120" font-family="Arial" font-size="14px" fill="White"> 90 - 100 dB</text>
   <text x="75" y="160" font-family="Arial" font-size="14px" fill="White"> &gt; 100 dB</text>
-  <text x="75" y="200" font-family="Arial" font-size="14px" fill="White"> work or human sound</text>
+  <text x="75" y="200" font-family="Arial" font-size="14px" fill="White"> work sound</text>
   <text x="75" y="235" font-family="Arial" font-size="14px" fill="White"> natrual sound</text>
 </svg>
 
@@ -159,8 +159,8 @@ Date.prototype.Format = function(fmt)
   return fmt; 
 }
 
-var margin = {top: 10, right: 110, bottom: 30, left: 60},
-    width = 1000 - margin.left - margin.right,
+var margin = {top: 10, right: 80, bottom: 30, left: 60},
+    width = 900 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%Y%m%d").parse;
