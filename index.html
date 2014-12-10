@@ -96,21 +96,21 @@ body {
 
 
 <svg width="1200" height="500" style="display:block;">
- <image x="20" y="0" width="900" height="480" xlink:href="images/dorm.jpg"/>
- <image id="c1" x="180" y="90" width="50" height="50" xlink:href="images/green.png"/>
- <image id="c2" x="180" y="370" width="50" height="50" xlink:href="images/green.png"/>
- <image id="c3" x="420" y="90" width="50" height="50" xlink:href="images/green.png"/>
- <image id="c4" x="420" y="370" width="50" height="50" xlink:href="images/green.png"/>
- <image id="c5" x="100" y="250" width="50" height="50" xlink:href="images/green_normal.png"/>
- <image id="c6" x="700" y="220" width="50" height="50" xlink:href="images/green_work.png"/>
- <image id="me" x="520" y="170" width="60" height="60" xlink:href="images/me.png"/>
+ <image x="120" y="0" width="900" height="480" xlink:href="images/dorm.jpg"/>
+ <image id="c1" x="280" y="90" width="50" height="50" xlink:href="images/green.png"/>
+ <image id="c2" x="280" y="370" width="50" height="50" xlink:href="images/green.png"/>
+ <image id="c3" x="520" y="90" width="50" height="50" xlink:href="images/green.png"/>
+ <image id="c4" x="520" y="370" width="50" height="50" xlink:href="images/green.png"/>
+ <image id="c5" x="200" y="250" width="50" height="50" xlink:href="images/green_normal.png"/>
+ <image id="c6" x="800" y="220" width="50" height="50" xlink:href="images/green_work.png"/>
+ <image id="me" x="620" y="170" width="60" height="60" xlink:href="images/me.png"/>
 
-   <text id="c1text" x="220" y="90" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
-   <text id="c2text" x="220" y="390" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
-   <text id="c3text" x="470" y="90" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
-   <text id="c4text" x="470" y="390" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
-   <text id="c5text" x="100" y="250" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
-   <text id="c6text" x="700" y="220" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c1text" x="320" y="90" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c2text" x="320" y="390" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c3text" x="570" y="90" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c4text" x="570" y="390" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c5text" x="200" y="250" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
+   <text id="c6text" x="800" y="220" text-anchor="middle" font-family="Georgia" font-size="18px" fill="white">20.34</text>
    <text id="displaytext" x="20" y="489" font-family="Arial" font-size="26px" fill="White">Hi</text>
 </svg>
 
@@ -331,12 +331,12 @@ $("#playbutton").click(function(){
    nowplaying = true;
    timer = setInterval(function(){
    
-   drawcircle("#c1","#c1text",0,220,90,1);
-   drawcircle("#c2","#c2text",1,220,390,1);
-   drawcircle("#c3","#c3text",2,470,90,1);
-   drawcircle("#c4","#c4text",3,470,390,1);
-   drawcircle("#c5","#c5text",4,100,250,3);
-   drawcircle("#c6","#c6text",5,700,220,2);
+   drawcircle("#c1","#c1text",0,320,90,1);
+   drawcircle("#c2","#c2text",1,320,390,1);
+   drawcircle("#c3","#c3text",2,570,90,1);
+   drawcircle("#c4","#c4text",3,570,390,1);
+   drawcircle("#c5","#c5text",4,200,250,3);
+   drawcircle("#c6","#c6text",5,800,220,2);
 
    d3.select("#me").attr("x", (460 + (timeindex / 10)));
 
