@@ -160,7 +160,7 @@ Date.prototype.Format = function(fmt)
 }
 
 var margin = {top: 10, right: 110, bottom: 30, left: 60},
-    width = 800 - margin.left - margin.right,
+    width = 700 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%Y%m%d").parse;
@@ -345,8 +345,8 @@ $("#playbutton").click(function(){
    
 
    d3.select("#displaytext").text("At " + showtime.Format("hh:mm:ss") + ", the average noise is " + thedata[0].values[timeindex].temperature.toString() + " dB");
-   d3.select("#timeline").attr("x1",Math.floor(5 + timeindex*2.6));
-   d3.select("#timeline").attr("x2",Math.floor(5 + timeindex*2.6));
+   d3.select("#timeline").attr("x1",Math.floor(5 + timeindex*2.2));
+   d3.select("#timeline").attr("x2",Math.floor(5 + timeindex*2.2));
    timeindex++;
     showtime.setSeconds(showtime.getSeconds()+1);
    if (timeindex >= 301) inta=window.clearInterval(inta);
